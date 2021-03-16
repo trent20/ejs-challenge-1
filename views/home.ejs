@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <%- include('./partials/header') %>
+</head>
+<body>
+  <h1>People</h1>
+    <ul>
+      <div class="items">
+      <% for (let user of data) { %>
+        <div class="container">
+        <% if (!user.name){ %>
+          <li class="badStuff">bad data</li>
+        <% } else {  %>
+          <li class="users"><%= user.name %></li>
+          <ul>
+            <% if(user.age === undefined) { %>
+              <li>age missing</li>
+            <% }  else { %>
+              <li class="age">Age: <%= user.age %></li>
+            <% } %>
+              <li>Hobbies include:</li>
+              <ul>
+                <% if(user.hobbies === undefined) { %>
+                 <li>Hobbies missing</li>
+                <% } else { %>
+                  <%for (let hobby of user.hobbies) { %>
+                    <li class="hobbies"><%= hobby %></li>
+                  <% } %>
+                <% } %> 
+              </ul>
+          </ul>
+          </div>
+         <% } %>
+        <% } %>
+      </div> 
+      </ul>
+</body>
+</html>
